@@ -1,6 +1,7 @@
 # Weather Markov Explorer - Complete Build
 
 ## ✅ Project Overview
+
 A single-page React web application that fetches live weather data from the Open-Meteo API, constructs a discrete-time Markov chain from 90 days of historical weather, and provides interactive experiences to explore and forecast weather patterns.
 
 ---
@@ -43,14 +44,17 @@ Stochastic-Modeling-App/
 ### Local Development
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start development server:**
+
    ```bash
    npm run dev
    ```
+
    The app will be available at `http://localhost:3000`
 
 3. **Build for production:**
@@ -62,11 +66,13 @@ Stochastic-Modeling-App/
 ### Docker Deployment
 
 1. **Build the Docker image:**
+
    ```bash
    docker build -t your-registry/weather-markov:latest .
    ```
 
 2. **Push to container registry:**
+
    ```bash
    docker push your-registry/weather-markov:latest
    ```
@@ -81,6 +87,7 @@ Stochastic-Modeling-App/
 1. **Update image reference** in `k8s/deployment.yaml`
 
 2. **Deploy to cluster:**
+
    ```bash
    kubectl apply -f k8s/deployment.yaml
    kubectl apply -f k8s/service.yaml
@@ -99,17 +106,20 @@ Stochastic-Modeling-App/
 ## 🎨 Features
 
 ### Explore Tab
+
 - **Transition Matrix Heatmap**: Interactive 4×4 matrix showing state transition probabilities
 - **Long-Run Distribution**: Bar chart of the stationary distribution
 - **30-Day History**: Visual timeline of actual observed weather states
 
 ### Forecast Tab
+
 - **Adjustable Horizon**: Slider to set forecast length (7-30 days)
 - **Stochastic Simulation**: Generate different forecasts by clicking "Simulate"
 - **Forecast Timeline**: Visual emoji tiles for predicted weather
 - **Summary Statistics**: Count and percentage breakdown of forecasted states
 
 ### Supported Cities
+
 - New York
 - London
 - Tokyo
@@ -122,14 +132,16 @@ Stochastic-Modeling-App/
 ## 🧮 Markov Chain Model
 
 ### Weather States
-| State | Emoji | Condition |
-|-------|-------|-----------|
-| 0 | ☀️ | Sunny (cloud < 30%, precip < 1mm) |
-| 1 | 🌤️ | Partly Cloudy (30% ≤ cloud < 60%, precip < 1mm) |
-| 2 | ☁️ | Cloudy (cloud ≥ 60%, precip < 1mm) |
-| 3 | 🌧️ | Rainy (precip ≥ 1mm) |
+
+| State | Emoji | Condition                                       |
+| ----- | ----- | ----------------------------------------------- |
+| 0     | ☀️    | Sunny (cloud < 30%, precip < 1mm)               |
+| 1     | 🌤️    | Partly Cloudy (30% ≤ cloud < 60%, precip < 1mm) |
+| 2     | ☁️    | Cloudy (cloud ≥ 60%, precip < 1mm)              |
+| 3     | 🌧️    | Rainy (precip ≥ 1mm)                            |
 
 ### Key Algorithms
+
 1. **State Classification**: Rules-based classification from cloud cover and precipitation
 2. **Transition Matrix**: Row-normalized count matrix from consecutive day transitions
 3. **Stationary Distribution**: Power iteration (1000 cycles) from uniform starting distribution
@@ -194,11 +206,13 @@ UI Display + Forecast Simulation
 ## 📦 Dependencies
 
 ### Production
+
 - `react@^18.2.0` - UI framework
 - `react-dom@^18.2.0` - DOM rendering
 - `recharts@^2.10.0` - Chart components
 
 ### Development
+
 - `vite@^5.0.0` - Build tool
 - `@vitejs/plugin-react@^4.0.0` - React plugin for Vite
 - `@types/react@^18.2.0` - TypeScript types
@@ -239,7 +253,7 @@ UI Display + Forecast Simulation
 ✅ Statistical summary cards  
 ✅ Docker containerization  
 ✅ Kubernetes manifests with auto-scaling  
-✅ Nginx SPA routing and caching  
+✅ Nginx SPA routing and caching
 
 ---
 
